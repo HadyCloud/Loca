@@ -4,7 +4,10 @@ const { Restaurant } = require('../models');
 
 // GET theme
 router.get('/', async (req, res) => {
-  const rest = await Restaurant.findByPk(req.adminId);
+  const rest = await Restaurant.findOne({ where: { admin_id: req.adminId } });
+  if (!rest) {
+    return res.status(404).json({ error: 'Restaurant not found' });
+  }
   res.json({ theme: rest.theme });
 });
 

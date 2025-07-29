@@ -21,6 +21,7 @@ const CustomerFactory      = require('./customer');
 const ReservationFactory   = require('./reservation');
 const WaitlistEntryFactory = require('./waitlist-entry');
 const LoyaltyFactory       = require('./loyalty');
+const UserFactory          = require('./user');
 
 // Initialize models
 const Admin           = AdminFactory(sequelize, DataTypes);
@@ -30,6 +31,7 @@ const Customer        = CustomerFactory(sequelize, DataTypes);
 const Reservation     = ReservationFactory(sequelize, DataTypes);
 const WaitlistEntry   = WaitlistEntryFactory(sequelize, DataTypes);
 const Loyalty         = LoyaltyFactory(sequelize, DataTypes);
+const User            = UserFactory(sequelize, DataTypes);
 
 // Define associations
 Restaurant.hasMany(Table,   { foreignKey: 'restaurant_id' });
@@ -51,4 +53,5 @@ module.exports = {
   Reservation,
   WaitlistEntry,
   Loyalty,
+  User,
 };
